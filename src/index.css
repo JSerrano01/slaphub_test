@@ -1,0 +1,17 @@
+/* 1) Cargar fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500;700&display=swap');
+
+/* 2) Variables y utilidades simples para usarlas en componentes */
+:root{
+  --font-title: 'Poppins', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+}
+
+/* 3) Clases utilitarias que ya estás usando */
+.font-title { font-family: var(--font-title); }
+.font-body  { font-family: var(--font-body); }
+
+/* 4) (Opcional) que todo el sitio use Roboto por defecto */
+html, body { font-family: var(--font-body); }
+
+@import "tailwindcss";
