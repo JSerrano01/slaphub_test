@@ -111,8 +111,20 @@ export default function Model3D() {
 
   return (
     <div className="fixed top-0 left-0 w-full h-full overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-pink-200 to-green-300 z-0" />
-      <div ref={containerRef} className="absolute top-0 left-0 w-full h-full z-10" />
+      {/* Fondo anterior con gradiente -> lo dejamos comentado */}
+      {/* <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-pink-200 to-green-300 z-0" /> */}
+
+      {/* Nuevo fondo con imagen desde /public/images */}
+      <div
+        className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0"
+        style={{ backgroundImage: "url('/images/image.png')" }}
+      />
+
+      {/* Contenedor del canvas Three.js */}
+      <div
+        ref={containerRef}
+        className="absolute top-0 left-0 w-full h-full z-10"
+      />
     </div>
   );
 }
