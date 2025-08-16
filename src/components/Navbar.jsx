@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom"; // 👈 importamos useLocation
 import gsap from "gsap";
-import { animateHero } from "./HeroSection"; // Importamos la función
+import { animateHero } from "./HeroSection"; 
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation(); // 👈 obtenemos la ruta actual
 
   const navbarRef = useRef(null);
   const logoRef = useRef(null);
@@ -12,21 +13,23 @@ export default function Navbar() {
   const buttonsRef = useRef([]);
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      onComplete: () => {
-        animateHero();
-      }
-    });
+    if (location.pathname === "/") { // 👈 solo corre animación en homepage
+      const tl = gsap.timeline({
+        onComplete: () => {
+          animateHero();
+        }
+      });
 
-    tl.fromTo(navbarRef.current, { y: -80, opacity: 0, filter: "blur(10px)" },
-      { y: 0, opacity: 1, filter: "blur(0px)", duration: 1, ease: "power3.out" })
-      .fromTo(logoRef.current, { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, "-=0.3")
-      .fromTo(linksRef.current, { opacity: 0, y: 15 },
-        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.25 }, "-=0.2")
-      .fromTo(buttonsRef.current, { opacity: 0, y: 15 },
-        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.3 }, "-=0.1");
-  }, []);
+      tl.fromTo(navbarRef.current, { y: -80, opacity: 0, filter: "blur(10px)" },
+        { y: 0, opacity: 1, filter: "blur(0px)", duration: 1, ease: "power3.out" })
+        .fromTo(logoRef.current, { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, "-=0.3")
+        .fromTo(linksRef.current, { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.25 }, "-=0.2")
+        .fromTo(buttonsRef.current, { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.3 }, "-=0.1");
+    }
+  }, [location.pathname]); // 👈 se vuelve a evaluar cuando cambia la ruta
 
   return (
     <header ref={navbarRef} className="fixed top-4 left-0 w-full z-50 px-6">

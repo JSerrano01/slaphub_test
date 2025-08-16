@@ -1,18 +1,22 @@
 // pages/HomePage.jsx
+import { motion } from "framer-motion";
 import HeroSection from "../components/HeroSection";
-import ProductCategories from "../components/ProductCategories";
 import InstagramFeed from "../components/InstagramFeed";
 import AboutUsSummary from "../components/AboutUsSummary";
 import Footer from "../components/Footer";
 
-export default function HomePage() {
+export default function HomePage({ pageReady }) {
   return (
-    <div className="relative z-10 pt-16 space-y-16">
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={pageReady ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="relative z-10 pt-16 space-y-16"
+    >
       <HeroSection />
-      {/* <ProductCategories /> */}
       <InstagramFeed />
       <AboutUsSummary />
       <Footer />
-    </div>
+    </motion.div>
   );
 }

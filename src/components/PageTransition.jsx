@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
 
-export default function PageTransition() {
+export default function PageTransition({ setPageReady }) {
   const location = useLocation();
   const [display, setDisplay] = useState(false);
   const [firstLoad, setFirstLoad] = useState(true);
@@ -14,8 +14,14 @@ export default function PageTransition() {
       return; // ❌ no mostrar transición en el primer render
     }
 
+    setPageReady(false); // 🚨 bloquear animaciones de página
     setDisplay(true);
-    const timer = setTimeout(() => setDisplay(false), 800); // duración total
+
+    const timer = setTimeout(() => {
+      setDisplay(false);
+      setPageReady(true); // ✅ habilitar animaciones de página después de transición
+    }, 800);
+
     return () => clearTimeout(timer);
   }, [location]);
 
