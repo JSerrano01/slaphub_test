@@ -1,6 +1,8 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { forwardRef } from "react";
+import { useRef, useEffect } from "react";
+
 
 const categories = [
   { title: "Custom Jars", modelPath: "/models/soda_can_2.glb" },

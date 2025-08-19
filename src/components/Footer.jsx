@@ -18,7 +18,7 @@ const Footer = () => {
         ease: "power3.out",
         scrollTrigger: {
           trigger: footerRef.current,
-          start: "top 90%", // Comienza cuando el footer esté casi visible
+          start: "top 90%", // Animación al entrar casi en pantalla
           toggleActions: "play none none reverse",
         },
       }
@@ -26,44 +26,40 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer
-      ref={footerRef}
-      className="py-10 px-6"
-      style={{
-        backgroundColor: "rgba(0,0,0,0.5)",
-        backdropFilter: "blur(6px)",
-      }}
-    >
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-white">
-        {/* Contact */}
+    <footer ref={footerRef} className="py-10 px-6">
+      {/* Contenedor principal */}
+      <div className="backdrop-blur-md bg-transparent rounded-2xl shadow-lg px-8 py-6 hidden md:grid grid-cols-2 gap-12 font-title text-white">
+        
+        {/* Contacto */}
         <div>
-          <h3 className="text-xl font-bold font-title">Contact us</h3>
-          <p className="mt-2 font-semibold font-title">Sticker LA</p>
-          <p className="font-title">Call/Text: (424) 266-1054</p>
-          <p className="font-title">Email: slaphubla@gmail.com</p>
+          <h3 className="text-xl font-bold">Contact Us</h3>
+          <p className="mt-2 font-semibold">Sticker LA</p>
+          <p>Call/Text: (424) 266-1054</p>
+          <p>Email: slaphubla@gmail.com</p>
         </div>
 
         {/* Newsletter */}
         <div>
-          <h3 className="text-xl font-bold font-title">Exclusive Email Offers</h3>
+          <h3 className="text-xl font-bold">Exclusive Email Offers</h3>
           <form className="mt-4 flex">
             <input
               type="email"
-              placeholder="Enter email"
-              className="flex-1 border border-gray-300 px-4 py-2 rounded-l-md focus:outline-none text-black font-title"
+              placeholder="Enter your email"
+              className="flex-1 border border-gray-300 px-4 py-2 rounded-l-md bg-transparent text-white placeholder-gray-400 focus:outline-none"
             />
             <button
               type="submit"
-              className="bg-pink-500 text-white px-4 py-2 rounded-r-md hover:bg-pink-600 font-title"
+              className="bg-[#2A2D40] text-[#9BDAF2] px-4 py-2 rounded-r-md hover:bg-[#9BDAF2] hover:text-[#2A2D40] transition-colors"
             >
               Subscribe
             </button>
           </form>
         </div>
-      </div>
 
-      <div className="mt-8 text-center text-sm text-gray-300 font-title">
-        <p>©2025 Stickerlab LA. All Rights Reserved.</p>
+        {/* Derechos reservados */}
+        <div className="col-span-2 mt-8 text-center text-sm">
+          <p>© 2025 Stickerlab LA. All Rights Reserved.</p>
+        </div>
       </div>
     </footer>
   );

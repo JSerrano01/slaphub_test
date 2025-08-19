@@ -22,6 +22,11 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage pageReady={pageReady} />} />
           <Route path="/about" element={<AboutPage pageReady={pageReady} />} />
+          
+          {/* Ruta para la página de productos, aceptando una categoría dinámica */}
+          <Route path="/products/:category" element={<ProductsPage pageReady={pageReady} />} />
+          
+          {/* Si solo quieres que la ruta /products también funcione sin categoría */}
           <Route path="/products" element={<ProductsPage pageReady={pageReady} />} />
         </Routes>
       </div>
