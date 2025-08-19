@@ -117,7 +117,7 @@ export default function Model3D() {
       {/* Nuevo fondo con imagen desde /public/images */}
       <div
         className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0"
-        style={{ backgroundImage: "url('/images/image.png')" }}
+        style={{ backgroundImage: "url('/images/image1.png')" }}
       />
 
       {/* Contenedor del canvas Three.js */}

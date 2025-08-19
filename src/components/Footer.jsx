@@ -38,7 +38,7 @@ const Footer = () => {
         {/* Contact */}
         <div>
           <h3 className="text-xl font-bold font-title">Contact us</h3>
-          <p className="mt-2 font-semibold font-title">SlapHub LA</p>
+          <p className="mt-2 font-semibold font-title">Sticker LA</p>
           <p className="font-title">Call/Text: (424) 266-1054</p>
           <p className="font-title">Email: slaphubla@gmail.com</p>
         </div>
@@ -63,7 +63,7 @@ const Footer = () => {
       </div>
 
       <div className="mt-8 text-center text-sm text-gray-300 font-title">
-        <p>©2025 SlapHub LA. All Rights Reserved.</p>
+        <p>©2025 Stickerlab LA. All Rights Reserved.</p>
       </div>
     </footer>
   );

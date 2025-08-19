@@ -37,7 +37,7 @@ const RotatingShape = ({ type = "box", scale = 1, position = [0, 0, 0], rotation
   return (
     <mesh ref={shapeRef} scale={scale} position={position}>
       {geometry}
-      <meshStandardMaterial color="#ff69b4" metalness={0.3} roughness={0.4} />
+      <meshStandardMaterial color="#495F73" metalness={0.3} roughness={0.4} />
     </mesh>
   );
 };
@@ -97,10 +97,10 @@ const HeroSection = () => {
           style={{ backgroundColor: "rgba(0,0,0,0.45)", backdropFilter: "blur(4px)" }}
         >
           <div ref={textRef}>
-            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight font-title">
+            <h1 className="text-4xl md:text-5xl font-bold text-[#9BDAF2] leading-tight font-title">
               TURN YOUR IDEA INTO A REALITY.
             </h1>
-            <p className="mt-3 text-gray-200 italic font-body text-sm md:text-base">
+            <p className="mt-3 text-[#9BDAF2] italic font-body text-sm md:text-base">
               From Concept to Creation
             </p>
           </div>
@@ -133,8 +133,8 @@ const HeroSection = () => {
                 <OrbitControls enableZoom={false} enablePan={false} />
               </Canvas>
             </div>
-            <h3 className="mt-2 text-md font-semibold text-pink-500 font-title">{cat.title}</h3>
-            <button className="mt-1 bg-pink-200/80 hover:bg-pink-300 px-3 py-1.5 rounded-full font-title text-xs">
+            <h3 className="mt-2 text-md font-semibold text-[#9BDAF2] font-title">{cat.title}</h3>
+            <button className="mt-1 bg-[#2A2D40] text-[#9BDAF2] hover:bg-[#9BDAF2] hover:text-[#2A2D40] px-3 py-1.5 rounded-full font-title text-xs">
               View details →
             </button>
           </div>

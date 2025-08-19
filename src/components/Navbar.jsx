@@ -34,9 +34,9 @@ export default function Navbar() {
   return (
     <header ref={navbarRef} className="fixed top-4 left-0 w-full z-50 px-6">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
-        <Link ref={logoRef} to="/" className="flex items-center space-x-2 text-xl font-bold text-black font-title">
-          <img src="/images/logo.png" alt="SlapHub Logo" className="h-8 w-8 object-contain" />
-          <span>SlapHub</span>
+        <Link ref={logoRef} to="/" className="flex items-center space-x-2 text-xl font-bold text-[#9BDAF2] font-title">
+          <img src="/images/Donatello.svg" alt="SlapHub Logo" className="h-8 w-8 object-contain" />
+          <span>Stickerlab LA</span>
         </Link>
 
         <div className="backdrop-blur-md bg-transparent rounded-2xl shadow-lg px-12 py-3 hidden md:flex space-x-10 font-title">
@@ -44,7 +44,7 @@ export default function Navbar() {
             <Link
               key={text}
               ref={(el) => (linksRef.current[i] = el)}
-              className="text-black px-3 py-2"
+              className="text-[#9BDAF2] px-3 py-2"
               to={text === "Home" ? "/" : `/${text.toLowerCase().replace(" ", "")}`}
             >
               {text}
@@ -54,12 +54,12 @@ export default function Navbar() {
 
         <div className="flex items-center space-x-3">
           <Link ref={(el) => (buttonsRef.current[0] = el)} to="/login"
-            className="bg-black text-white px-5 py-2 rounded-full hover:bg-gray-800 transition-colors font-title">
+            className="bg-[#2A2D40] text-[#9BDAF2] px-5 py-2 rounded-full hover:bg-[#9BDAF2] hover:text-[#2A2D40] transition-colors font-title">
             Login
           </Link>
           <button ref={(el) => (buttonsRef.current[1] = el)}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors font-title md:hidden">
+            className="bg-[#2A2D40] text-[#9BDAF2] px-4 py-2 rounded-full hover:bg-[#9BDAF2] hover:text-[#2A2D40] transition-colors font-title md:hidden">
             ☰
           </button>
         </div>
