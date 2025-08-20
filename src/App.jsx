@@ -9,6 +9,8 @@ import PageTransition from "./components/PageTransition";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ProductsPage from "./pages/ProductsPage";
+import CategoryPage from "./pages/CategoryPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
 
 export default function App() {
   const [pageReady, setPageReady] = useState(true);
@@ -22,12 +24,15 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage pageReady={pageReady} />} />
           <Route path="/about" element={<AboutPage pageReady={pageReady} />} />
-          
-          {/* Ruta para la página de productos, aceptando una categoría dinámica */}
-          <Route path="/products/:category" element={<ProductsPage pageReady={pageReady} />} />
-          
-          {/* Si solo quieres que la ruta /products también funcione sin categoría */}
           <Route path="/products" element={<ProductsPage pageReady={pageReady} />} />
+          <Route
+            path="/products/:category"
+            element={<CategoryPage pageReady={pageReady} />}
+          />
+          <Route
+            path="/products/:category/:productId"
+            element={<ProductDetailPage pageReady={pageReady} />}
+          />
         </Routes>
       </div>
     </Router>

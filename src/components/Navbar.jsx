@@ -1,3 +1,4 @@
+// components/Navbar.jsx
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import gsap from "gsap";
@@ -8,7 +9,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate(); // Necesario para navegar programáticamente
+  const navigate = useNavigate();
 
   const navbarRef = useRef(null);
   const logoRef = useRef(null);
@@ -67,8 +68,14 @@ export default function Navbar() {
     }
   }, [location.pathname]);
 
-  const handleCategoryClick = (category) => {
-    navigate(`/products/${category}`);
+  // ✅ Ahora acepta categoría + producto opcional
+  const handleCategoryClick = (category, productId = null) => {
+    if (productId) {
+      navigate(`/products/${category}/${productId}`);
+    } else {
+      navigate(`/products/${category}`);
+    }
+    setIsProductsOpen(false);
   };
 
   return (
@@ -123,75 +130,167 @@ export default function Navbar() {
                              grid grid-cols-4 gap-8 bg-white text-black 
                              rounded-lg shadow-lg p-6 w-[900px] z-50 border border-gray-200"
                 >
+                  {/* Custom Jars */}
                   <div className="border-r border-gray-200 pr-6">
-                    <h3 className="font-bold text-gray-800 mb-3 text-lg">Custom Jars</h3>
+                    <h3 className="font-bold text-gray-800 mb-3 text-lg">
+                      Custom Jars
+                    </h3>
                     <ul className="space-y-2 text-sm">
                       <li>
-                        <button onClick={() => handleCategoryClick("miron-jar")} className="flex items-center hover:text-[#9BDAF2]">
-                          <span className="mr-2">-</span> Custom Labeled MIRON Jar
+                        <button
+                          onClick={() =>
+                            handleCategoryClick(
+                              "CustomJars",
+                              "custom-labeled-miron-jar"
+                            )
+                          }
+                          className="flex items-center hover:text-[#9BDAF2]"
+                        >
+                          <span className="mr-1">-</span> Custom Labeled MIRON Jar
                         </button>
                       </li>
                       <li>
-                        <button onClick={() => handleCategoryClick("miron-label-only")} className="flex items-center hover:text-[#9BDAF2]">
-                          <span className="mr-2">-</span> Custom Label ONLY for Miron Jar
+                        <button
+                          onClick={() =>
+                            handleCategoryClick(
+                              "CustomJars",
+                              "custom-label-only-miron"
+                            )
+                          }
+                          className="flex items-center hover:text-[#9BDAF2]"
+                        >
+                          <span className="mr-1">-</span> Custom Label ONLY for Miron Jar
                         </button>
                       </li>
                       <li>
-                        <button onClick={() => handleCategoryClick("uline-jar")} className="flex items-center hover:text-[#9BDAF2]">
-                          <span className="mr-2">-</span> Custom Label for ULINE Jar
+                        <button
+                          onClick={() =>
+                            handleCategoryClick(
+                              "CustomJars",
+                              "custom-label-uline"
+                            )
+                          }
+                          className="flex items-center hover:text-[#9BDAF2]"
+                        >
+                          <span className="mr-1">-</span> Custom Label for ULINE Jar
                         </button>
                       </li>
                     </ul>
                   </div>
 
+                  {/* Custom Pouches */}
                   <div className="border-r border-gray-200 pr-6">
-                    <h3 className="font-bold text-gray-800 mb-3 text-lg">Custom Pouches</h3>
+                    <h3 className="font-bold text-gray-800 mb-3 text-lg">
+                      Custom Pouches
+                    </h3>
                     <ul className="space-y-2 text-sm">
                       <li>
-                        <button onClick={() => handleCategoryClick("direct-print")} className="flex items-center hover:text-[#9BDAF2]">
-                          <span className="mr-2">-</span> Direct Print Pouches
+                        <button
+                          onClick={() =>
+                            handleCategoryClick(
+                              "CustomPouches",
+                              "direct-print-pouches"
+                            )
+                          }
+                          className="flex items-center hover:text-[#9BDAF2]"
+                        >
+                          <span className="mr-1">-</span> Direct Print Pouches
                         </button>
                       </li>
                       <li>
-                        <button onClick={() => handleCategoryClick("eighth-bag")} className="flex items-center hover:text-[#9BDAF2]">
-                          <span className="mr-2">-</span> Labeled Eighth Bag
+                        <button
+                          onClick={() =>
+                            handleCategoryClick(
+                              "CustomPouches",
+                              "labeled-eighth-bag"
+                            )
+                          }
+                          className="flex items-center hover:text-[#9BDAF2]"
+                        >
+                          <span className="mr-1">-</span> Labeled Eighth Bag
                         </button>
                       </li>
                       <li>
-                        <button onClick={() => handleCategoryClick("pound-bag")} className="flex items-center hover:text-[#9BDAF2]">
-                          <span className="mr-2">-</span> Labeled Pound Bag
+                        <button
+                          onClick={() =>
+                            handleCategoryClick(
+                              "CustomPouches",
+                              "labeled-pound-bag"
+                            )
+                          }
+                          className="flex items-center hover:text-[#9BDAF2]"
+                        >
+                          <span className="mr-1">-</span> Labeled Pound Bag
                         </button>
                       </li>
                     </ul>
                   </div>
 
+                  {/* Custom Labels & Die Cuts */}
                   <div className="border-r border-gray-200 pr-6">
-                    <h3 className="font-bold text-gray-800 mb-3 text-lg">Custom Labels & Die Cuts</h3>
+                    <h3 className="font-bold text-gray-800 mb-3 text-lg">
+                      Custom Labels & Die Cuts
+                    </h3>
                     <ul className="space-y-2 text-sm">
                       <li>
-                        <button onClick={() => handleCategoryClick("die-cut-stickers")} className="flex items-center hover:text-[#9BDAF2]">
-                          <span className="mr-2">-</span> Die Cut Stickers
+                        <button
+                          onClick={() =>
+                            handleCategoryClick(
+                              "CustomLabelsDieCuts",
+                              "die-cut-stickers"
+                            )
+                          }
+                          className="flex items-center hover:text-[#9BDAF2]"
+                        >
+                          <span className="mr-1">-</span> Die Cut Stickers
                         </button>
                       </li>
                       <li>
-                        <button onClick={() => handleCategoryClick("circle-square")} className="flex items-center hover:text-[#9BDAF2]">
-                          <span className="mr-2">-</span> Circle/Square Stickers
+                        <button
+                          onClick={() =>
+                            handleCategoryClick(
+                              "CustomLabelsDieCuts",
+                              "circle-square-stickers"
+                            )
+                          }
+                          className="flex items-center hover:text-[#9BDAF2]"
+                        >
+                          <span className="mr-1">-</span> Circle/Square Stickers
                         </button>
                       </li>
                     </ul>
                   </div>
 
+                  {/* Accessories */}
                   <div>
-                    <h3 className="font-bold text-gray-800 mb-3 text-lg">Custom Accessories</h3>
+                    <h3 className="font-bold text-gray-800 mb-3 text-lg">
+                      Custom Accessories
+                    </h3>
                     <ul className="space-y-2 text-sm">
                       <li>
-                        <button onClick={() => handleCategoryClick("o2vape")} className="flex items-center hover:text-[#9BDAF2]">
-                          <span className="mr-2">-</span> Custom Label for o2vape Traveler
+                        <button
+                          onClick={() =>
+                            handleCategoryClick(
+                              "CustomAccessories",
+                              "custom-label-o2vape"
+                            )
+                          }
+                          className="flex items-center hover:text-[#9BDAF2]"
+                        >
+                          <span className="mr-1">-</span> Custom Label for o2vape Traveler
                         </button>
                       </li>
                       <li>
-                        <button onClick={() => handleCategoryClick("pre-roll")} className="flex items-center hover:text-[#9BDAF2]">
-                          <span className="mr-2">-</span> Custom Pre-Roll Tubes
+                        <button
+                          onClick={() =>
+                            handleCategoryClick(
+                              "CustomAccessories",
+                              "custom-pre-roll-tubes"
+                            )
+                          }
+                          className="flex items-center hover:text-[#9BDAF2]"
+                        >
+                          <span className="mr-1">-</span> Custom Pre-Roll Tubes
                         </button>
                       </li>
                     </ul>
