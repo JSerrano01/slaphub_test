@@ -128,7 +128,7 @@ export default function Navbar() {
                   transition={{ duration: 0.3, ease: "easeOut" }}
                   className="absolute left-1/2 -translate-x-1/2 top-full mt-1 
                              grid grid-cols-4 gap-8 bg-white text-black 
-                             rounded-lg shadow-lg p-6 w-[900px] z-50 border border-gray-200"
+                             rounded-lg shadow-lg p-6 w-[1250px] z-50 border border-gray-200"
                 >
                   {/* Custom Jars */}
                   <div className="border-r border-gray-200 pr-6">
